@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.github/
+!.github/**
+!README.md
+!highlaw/
+!highlaw/**
