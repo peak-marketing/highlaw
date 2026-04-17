@@ -49,6 +49,7 @@ html { height: 100%; }
 body.main-page {
   height: 100%;
   overflow: hidden;   /* 뷰포트 밖 섹션 클리핑 */
+  overscroll-behavior: none;
 }
 
 /* 슬라이드 컨테이너 — position 없이 transform만 */
@@ -264,7 +265,7 @@ body.main-page.mobile-scroll .ms {
 .ms {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -678,10 +679,61 @@ body.main-page.mobile-scroll .ms {
 
 /* ── RESPONSIVE 768px ────────────────────────── */
 @media (max-width:768px) {
-  .ms { height: auto; min-height: 100svh; }
+  .ms {
+    height: calc(var(--vh, 1vh) * 100);
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .ms__content {
+    padding: 0 20px;
+  }
+
+  .ms__content--center {
+    max-width: 36rem;
+  }
+
+  .ms__eyebrow,
+  .ms__label {
+    font-size: .95rem;
+    letter-spacing: .24em;
+    margin-bottom: 14px;
+  }
+
+  .ms__heading {
+    font-size: clamp(3.2rem, 11vw, 5.2rem);
+    margin-bottom: 18px;
+  }
+
+  .ms__heading-en {
+    font-size: clamp(2.8rem, 10vw, 4.8rem);
+    margin-bottom: 18px;
+  }
+
+  .ms__heading-sm {
+    font-size: 2.4rem;
+  }
+
+  .ms__rule {
+    width: 44px;
+    margin-bottom: 18px;
+  }
+
+  .ms__body {
+    font-size: 1.25rem;
+    line-height: 1.85;
+    margin-bottom: 26px;
+  }
+
+  .ms__body--wide {
+    max-width: 33rem;
+  }
 
   .ms__scroll-down {
     display: none;
+  }
+
+  .ms__cta {
+    gap: 12px;
   }
 
   .gnb, .btn-header-consult { display:none; }
@@ -690,19 +742,100 @@ body.main-page.mobile-scroll .ms {
 
   .section-dots { display:none; }
 
-  .ms__people-grid { grid-template-columns:1fr; gap:28px; max-width:340px; }
-  .ms__content--full { padding:0 24px; }
+  .ms__content--full {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .ms__people-header {
+    margin-bottom: 24px;
+  }
+
+  .ms__people-grid {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    max-width: none;
+    overflow-x: auto;
+    padding: 0 2px 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ms__people-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ms__person {
+    flex: 0 0 min(72vw, 260px);
+    scroll-snap-align: center;
+  }
+
+  .ms__person-photo {
+    padding-bottom: 100%;
+  }
+
+  .ms__person-info {
+    padding: 14px 2px 0;
+  }
+
+  .ms__person-info strong {
+    font-size: 1.5rem;
+  }
+
+  .ms__person-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .ms__people-more {
+    margin-top: 22px;
+  }
+
+  .ms--contact {
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 92px;
+  }
+
+  .ms__contact-info {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .ms__contact-info div {
+    gap: 10px;
+  }
+
+  .ms__contact-info a {
+    font-size: 1.25rem;
+  }
 
   .footer-inner {
     flex-direction:column;
     text-align:center;
     padding:0 24px;
-    gap:16px;
+    gap:12px;
   }
-  .footer-nav { flex-wrap:wrap; justify-content:center; }
-  .footer-nav { margin-left:0; }
 
-  .ms__contact-info { gap:28px; }
+  .main-footer {
+    position: static;
+    width: 100%;
+    margin-top: 24px;
+    padding: 18px 0 calc(env(safe-area-inset-bottom) + 18px);
+  }
+
+  .footer-nav {
+    display: none;
+    margin-left:0;
+  }
+
+  .footer-copy {
+    font-size: .95rem;
+    white-space: normal;
+  }
+
   .ms__cta { flex-direction:column; align-items:center; }
   .btn-gold, .btn-outline-w { width:240px; text-align:center; }
 
