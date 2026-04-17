@@ -62,10 +62,16 @@ body.main-page {
 body.main-page.mobile-scroll {
   overflow-y: auto;
   height: auto;
+  scroll-snap-type: y proximity;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 body.main-page.mobile-scroll #slideWrap {
   transform: none !important;
   transition: none !important;
+}
+body.main-page.mobile-scroll .ms {
+  scroll-snap-align: start;
 }
 
 /* ── HEADER ─────────────────────────────────── */
@@ -673,6 +679,10 @@ body.main-page.mobile-scroll #slideWrap {
 /* ── RESPONSIVE 768px ────────────────────────── */
 @media (max-width:768px) {
   .ms { height: auto; min-height: 100svh; }
+
+  .ms__scroll-down {
+    display: none;
+  }
 
   .gnb, .btn-header-consult { display:none; }
   .btn-nav-mobile { display:flex; }

@@ -109,7 +109,7 @@ function openMob() {
 }
 function closeMob() {
   mobileNav.classList.remove('open');
-  if (!isMob()) document.body.style.overflow = '';
+  document.body.style.overflow = '';
 }
 
 /* ── 모바일: 현재 섹션 추적 (IntersectionObserver) ── */
