@@ -40,7 +40,11 @@ function setSlidePosition(animated = false) {
 }
 
 function primeVideo(video) {
-  const markReady = () => video.classList.add('is-ready');
+  const posterWrap = video.closest('.ms__bg--poster');
+  const markReady = () => {
+    video.classList.add('is-ready');
+    if (posterWrap) posterWrap.classList.add('is-ready');
+  };
 
   if (video.readyState >= 2) markReady();
   video.addEventListener('loadeddata', markReady, { once: true });
