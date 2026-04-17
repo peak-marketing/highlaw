@@ -35,7 +35,7 @@ function setViewportUnit() {
 
 function setSlidePosition(animated = false) {
   slideWrap.style.transition = animated ? `transform ${DURATION}ms ${EASE}` : 'none';
-  slideWrap.style.transform  = `translateY(${-current * viewportHeight}px)`;
+  slideWrap.style.transform  = `translate3d(0, ${-current * viewportHeight}px, 0)`;
 }
 
 /* ── 슬라이드 이동 ── */

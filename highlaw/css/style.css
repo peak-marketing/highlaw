@@ -66,6 +66,10 @@ body.main-page {
   width: 100%;
   height: 100%;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   /* transition은 JS에서 동적으로 설정 */
 }
 
@@ -281,14 +285,24 @@ body.main-page.mobile-scroll .ms {
   justify-content: center;
   overflow: hidden;
   flex-shrink: 0;
+  isolation: isolate;
+  background: var(--c-bg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Backgrounds */
 .ms__bg {
   position:absolute; inset:0;
+  z-index: 0;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 30% 60%, rgba(44,31,20,.9) 0%, transparent 65%),
     linear-gradient(155deg, #0A0806 0%, #1A1208 45%, #2C1F14 80%, #0A0806 100%);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 /* 사진 배경 */
 .ms__bg--photo {
@@ -301,6 +315,13 @@ body.main-page.mobile-scroll .ms {
   width:100%; height:100%;
   object-fit:cover;
   opacity:.55;
+  filter: brightness(.74) saturate(.92);
+  transform: translate3d(0, 0, 0) scale(1.01);
+  transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 .ms--dark  { background: var(--c-bg); }
 .ms--dark2 {
@@ -313,12 +334,18 @@ body.main-page.mobile-scroll .ms {
 /* Overlays */
 .ms__overlay {
   position:absolute; inset:0;
+  z-index: 1;
+  pointer-events: none;
   background: linear-gradient(
     to bottom,
     rgba(10,8,6,.45) 0%,
     rgba(10,8,6,.25) 45%,
     rgba(10,8,6,.65) 100%
   );
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 /* 사진/영상 위 어두운 오버레이 */
 .ms__overlay--dark {
@@ -343,6 +370,9 @@ body.main-page.mobile-scroll .ms {
   z-index: 2;
   padding: 0 24px;
   width: 100%;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .ms__content--center {
   text-align: center;
