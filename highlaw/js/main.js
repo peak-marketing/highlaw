@@ -45,6 +45,7 @@ function goTo(idx) {
   animating = true;
   current   = idx;
 
+  window.scrollTo(0, 0);
   setSlidePosition(true);
 
   dots.forEach((d, i) => d.classList.toggle('active', i === idx));
@@ -71,14 +72,14 @@ window.addEventListener('wheel', (e) => {
 /* ── 터치 스와이프 ── */
 let ty = 0;
 let tx = 0;
-window.addEventListener('touchstart', e => {
+document.addEventListener('touchstart', e => {
   if (isMenuOpen()) return;
   ty = e.touches[0].clientY;
   tx = e.touches[0].clientX;
   touchLocked = false;
   touchIsVertical = false;
 }, { passive: true });
-window.addEventListener('touchmove', e => {
+document.addEventListener('touchmove', e => {
   if (isMenuOpen()) return;
   const dy = ty - e.touches[0].clientY;
   const dx = tx - e.touches[0].clientX;
@@ -91,14 +92,14 @@ window.addEventListener('touchmove', e => {
 
   if (touchIsVertical) e.preventDefault();
 }, { passive: false });
-window.addEventListener('touchend', e => {
+document.addEventListener('touchend', e => {
   if (isMenuOpen()) return;
   const d = ty - e.changedTouches[0].clientY;
   const dx = tx - e.changedTouches[0].clientX;
   if (Math.abs(d) < 55 || Math.abs(d) <= Math.abs(dx)) return;
   d > 0 ? goTo(current + 1) : goTo(current - 1);
 }, { passive: true });
-window.addEventListener('touchcancel', () => {
+document.addEventListener('touchcancel', () => {
   touchLocked = false;
   touchIsVertical = false;
 }, { passive: true });
@@ -122,8 +123,10 @@ if (scrollBtn) scrollBtn.addEventListener('click', () => goTo(1));
 function isMob() { return window.innerWidth < 769; }
 
 function applyMode() {
+  root.classList.add('main-page-lock');
   document.body.classList.remove('mobile-scroll');
   root.style.overflow = 'hidden';
+  window.scrollTo(0, 0);
   setViewportUnit();
   setSlidePosition();
   header.classList.toggle('scrolled', current > 0);
