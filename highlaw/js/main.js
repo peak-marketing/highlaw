@@ -21,6 +21,8 @@ const TOTAL   = sections.length;
 let current   = 0;
 let animating = false;
 let viewportHeight = window.innerHeight;
+let touchLocked = false;
+let touchIsVertical = false;
 
 function isMenuOpen() {
   return mobileNav && mobileNav.classList.contains('open');
@@ -73,13 +75,32 @@ window.addEventListener('touchstart', e => {
   if (isMenuOpen()) return;
   ty = e.touches[0].clientY;
   tx = e.touches[0].clientX;
+  touchLocked = false;
+  touchIsVertical = false;
 }, { passive: true });
+window.addEventListener('touchmove', e => {
+  if (isMenuOpen()) return;
+  const dy = ty - e.touches[0].clientY;
+  const dx = tx - e.touches[0].clientX;
+
+  if (!touchLocked) {
+    if (Math.abs(dy) < 8 && Math.abs(dx) < 8) return;
+    touchLocked = true;
+    touchIsVertical = Math.abs(dy) > Math.abs(dx);
+  }
+
+  if (touchIsVertical) e.preventDefault();
+}, { passive: false });
 window.addEventListener('touchend', e => {
   if (isMenuOpen()) return;
   const d = ty - e.changedTouches[0].clientY;
   const dx = tx - e.changedTouches[0].clientX;
   if (Math.abs(d) < 55 || Math.abs(d) <= Math.abs(dx)) return;
   d > 0 ? goTo(current + 1) : goTo(current - 1);
+}, { passive: true });
+window.addEventListener('touchcancel', () => {
+  touchLocked = false;
+  touchIsVertical = false;
 }, { passive: true });
 
 /* ── 키보드 ── */
@@ -102,6 +123,7 @@ function isMob() { return window.innerWidth < 769; }
 
 function applyMode() {
   document.body.classList.remove('mobile-scroll');
+  root.style.overflow = 'hidden';
   setViewportUnit();
   setSlidePosition();
   header.classList.toggle('scrolled', current > 0);

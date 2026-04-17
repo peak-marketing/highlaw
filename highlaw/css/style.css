@@ -50,6 +50,7 @@ body.main-page {
   height: 100%;
   overflow: hidden;   /* 뷰포트 밖 섹션 클리핑 */
   overscroll-behavior: none;
+  touch-action: pan-x;
 }
 
 /* 슬라이드 컨테이너 — position 없이 transform만 */
