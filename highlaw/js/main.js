@@ -16,6 +16,7 @@ const dots        = document.querySelectorAll('.section-dots li a');
 const sections    = document.querySelectorAll('#slideWrap .ms');
 const scrollBtn   = document.getElementById('scrollDown');
 const root        = document.documentElement;
+const bgVideos    = document.querySelectorAll('.ms__video');
 
 const TOTAL   = sections.length;
 let current   = 0;
@@ -36,6 +37,20 @@ function setViewportUnit() {
 function setSlidePosition(animated = false) {
   slideWrap.style.transition = animated ? `transform ${DURATION}ms ${EASE}` : 'none';
   slideWrap.style.transform  = `translate3d(0, ${-current * viewportHeight}px, 0)`;
+}
+
+function primeVideo(video) {
+  const markReady = () => video.classList.add('is-ready');
+
+  if (video.readyState >= 2) markReady();
+  video.addEventListener('loadeddata', markReady, { once: true });
+  video.addEventListener('canplay', markReady, { once: true });
+
+  video.load();
+  const playPromise = video.play();
+  if (playPromise && typeof playPromise.then === 'function') {
+    playPromise.then(markReady).catch(() => {});
+  }
 }
 
 /* ── 슬라이드 이동 ── */
@@ -152,3 +167,5 @@ function closeMob() {
   mobileNav.classList.remove('open');
   document.body.style.overflow = '';
 }
+
+bgVideos.forEach(primeVideo);
