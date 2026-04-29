@@ -43,6 +43,21 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 const contactForm = document.getElementById('contactForm');
 const areaSelect  = document.getElementById('area');
 
+if (contactForm) {
+  const params = new URLSearchParams(window.location.search);
+  const date = params.get('date');
+  const time = params.get('time');
+  const subject = document.getElementById('subject');
+  const message = document.getElementById('message');
+
+  if (date && time && subject && !subject.value) {
+    subject.value = `${date} ${time} 상담 예약 문의`;
+  }
+  if (date && time && message && !message.value) {
+    message.value = `희망 상담 일시: ${date} ${time}\n`;
+  }
+}
+
 if (areaSelect) {
   areaSelect.addEventListener('change', () => {
     areaSelect.classList.toggle('filled', areaSelect.value !== '');
