@@ -698,6 +698,59 @@ a.contact-item__val:hover { color:var(--c-gold); }
   color:#fff;
 }
 
+/* ── About Place ─────────────────────────────── */
+.about-place {
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(320px, .8fr);
+  gap:48px;
+  align-items:end;
+  padding:48px 0 8px;
+  border-top:1px solid rgba(17,17,17,.16);
+}
+.about-place__text h2 {
+  font-family:var(--f-kr);
+  font-size:clamp(2.6rem, 3.5vw, 4.2rem);
+  line-height:1.28;
+  color:#111;
+  margin-bottom:18px;
+}
+.about-place__text p {
+  max-width:560px;
+  font-size:1.45rem;
+  line-height:2;
+  color:#666;
+}
+.about-place__info {
+  background:#fff;
+  border:1px solid rgba(17,17,17,.12);
+  padding:30px;
+  display:grid;
+  gap:10px;
+}
+.about-place__info strong {
+  color:#111;
+  font-size:1.65rem;
+  font-weight:500;
+  line-height:1.6;
+}
+.about-place__info span {
+  color:#777;
+  font-size:1.25rem;
+}
+.about-place__info a {
+  justify-self:start;
+  margin-top:12px;
+  border-bottom:1px solid #111;
+  padding-bottom:4px;
+  color:#111;
+  font-size:1.25rem;
+  letter-spacing:.08em;
+  transition:opacity var(--t);
+}
+.about-place__info a:hover {
+  opacity:.6;
+}
+
 /* ── Attorney Message ───────────────────────── */
 .message-feature {
   display:grid;
@@ -829,6 +882,7 @@ a.contact-item__val:hover { color:var(--c-gold); }
   .admin-grid,
   .practice-detail__intro,
   .message-feature,
+  .about-place,
   .practice-detail__grid { grid-template-columns:1fr; }
   .message-grid { grid-template-columns:1fr; }
   .practice-detail__intro p { grid-column:auto; }
