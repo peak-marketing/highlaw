@@ -6,6 +6,8 @@
 const btnNav      = document.getElementById('btnNavMobile');
 const mobileNav   = document.getElementById('mobileNav');
 const mobileClose = document.getElementById('mobileNavClose');
+const siteHeader  = document.getElementById('siteHeader');
+const siteLogo    = document.querySelector('.site-logo a');
 
 if (btnNav) {
   btnNav.addEventListener('click', () => {
@@ -22,6 +24,20 @@ if (mobileNav) {
 function closeMobileNav() {
   mobileNav && mobileNav.classList.remove('open');
   document.body.style.overflow = '';
+}
+
+if (siteLogo && siteHeader) {
+  siteLogo.addEventListener('click', e => {
+    if (window.innerWidth < 769) return;
+    if (!siteHeader.classList.contains('nav-open')) {
+      e.preventDefault();
+      siteHeader.classList.add('nav-open');
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (!siteHeader.contains(e.target)) siteHeader.classList.remove('nav-open');
+  });
 }
 
 /* ── Scroll reveal ───────────────────────────── */

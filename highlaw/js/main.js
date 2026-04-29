@@ -9,6 +9,7 @@ const EASE     = 'cubic-bezier(0.77, 0, 0.175, 1)';
 /* ── Elements ── */
 const slideWrap   = document.getElementById('slideWrap');
 const header      = document.getElementById('siteHeader');
+const siteLogo    = document.querySelector('.site-logo a');
 const btnNav      = document.getElementById('btnNavMobile');
 const mobileNav   = document.getElementById('mobileNav');
 const mobileClose = document.getElementById('mobileNavClose');
@@ -170,6 +171,20 @@ function openMob() {
 function closeMob() {
   mobileNav.classList.remove('open');
   document.body.style.overflow = '';
+}
+
+if (siteLogo && header) {
+  siteLogo.addEventListener('click', e => {
+    if (isMob()) return;
+    if (!header.classList.contains('nav-open')) {
+      e.preventDefault();
+      header.classList.add('nav-open');
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (!header.contains(e.target)) header.classList.remove('nav-open');
+  });
 }
 
 bgVideos.forEach(primeVideo);

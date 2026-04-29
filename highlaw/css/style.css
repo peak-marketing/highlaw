@@ -148,6 +148,11 @@ body.main-page.mobile-scroll .ms {
   grid-area: nav;
   justify-self: center;
   margin-left: 0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-8px);
+  transition:opacity var(--t), transform var(--t), visibility var(--t);
 }
 .gnb ul { display:flex; justify-content:center; gap:34px; }
 .gnb li { position:relative; }
@@ -215,6 +220,14 @@ body.main-page.mobile-scroll .ms {
   visibility:visible;
   pointer-events:auto;
   transform:translateX(-50%) translateY(0);
+}
+.site-header:hover .gnb,
+.site-header:focus-within .gnb,
+.site-header.nav-open .gnb {
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0);
 }
 
 /* Header consult button */
