@@ -823,6 +823,11 @@ body.main-page.mobile-scroll .ms {
 .main-page .site-header:not(.scrolled):not(.solid) .gnb .gnb-dropdown a:hover {
   color:#111;
 }
+.main-page .site-header:not(.scrolled):not(.solid):hover .gnb > ul > li > a,
+.main-page .site-header:not(.scrolled):not(.solid):focus-within .gnb > ul > li > a,
+.main-page .site-header:not(.scrolled):not(.solid).nav-open .gnb > ul > li > a {
+  color:#111;
+}
 .main-page .site-header:not(.scrolled):not(.solid) .btn-header-consult {
   border-color:rgba(255,255,255,.45);
 }
