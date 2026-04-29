@@ -925,6 +925,39 @@ body.main-page.mobile-scroll .ms {
   gap:22px;
   align-items:center;
 }
+.ms__place-link {
+  margin-top:34px;
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.38);
+  display:grid;
+  gap:8px;
+}
+.ms__place-link span {
+  font-family:var(--f-en);
+  font-size:.9rem;
+  letter-spacing:.22em;
+  color:rgba(255,255,255,.7);
+  text-transform:uppercase;
+}
+.ms__place-link strong {
+  font-size:1.35rem;
+  font-weight:400;
+  color:#fff;
+  line-height:1.6;
+}
+.ms__place-link a {
+  justify-self:start;
+  margin-top:4px;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.8);
+  padding-bottom:3px;
+  font-size:1.2rem;
+  letter-spacing:.08em;
+  transition:opacity var(--t);
+}
+.ms__place-link a:hover {
+  opacity:.65;
+}
 .ms--practice-minimal .ms__content--full,
 .ms--people-minimal .ms__content--full {
   align-items:stretch;
@@ -1152,6 +1185,19 @@ body.main-page.mobile-scroll .ms {
   }
   .ms__copy-panel .btn-line-gold {
     color:#111;
+    border-color:#111;
+  }
+  .ms__place-link {
+    border-color:rgba(17,17,17,.24);
+  }
+  .ms__place-link span {
+    color:#777;
+  }
+  .ms__place-link strong,
+  .ms__place-link a {
+    color:#111;
+  }
+  .ms__place-link a {
     border-color:#111;
   }
   .kakao-float {
