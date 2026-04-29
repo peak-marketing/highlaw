@@ -773,10 +773,16 @@ body.main-page.mobile-scroll .ms {
 
 /* ── Minimal black/white refresh ─────────────── */
 .main-page .site-header:not(.scrolled):not(.solid) .logo-en,
-.main-page .site-header:not(.scrolled):not(.solid) .gnb a,
+.main-page .site-header:not(.scrolled):not(.solid) .gnb > ul > li > a,
 .main-page .site-header:not(.scrolled):not(.solid) .btn-header-consult,
 .main-page .site-header:not(.scrolled):not(.solid) .logo-kr {
   color:#fff;
+}
+.main-page .site-header:not(.scrolled):not(.solid) .gnb .gnb-dropdown a {
+  color:#111;
+}
+.main-page .site-header:not(.scrolled):not(.solid) .gnb .gnb-dropdown a:hover {
+  color:#111;
 }
 .main-page .site-header:not(.scrolled):not(.solid) .btn-header-consult {
   border-color:rgba(255,255,255,.45);
