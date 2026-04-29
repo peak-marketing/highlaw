@@ -135,16 +135,17 @@ body.main-page.mobile-scroll .ms {
 
 /* GNB */
 .gnb { margin-left: auto; }
-.gnb ul { display:flex; gap:36px; }
+.gnb ul { display:flex; gap:28px; }
 .gnb li { position:relative; }
 .gnb a {
   display:block;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 400;
   letter-spacing: .04em;
   color: rgba(17,17,17,.78);
   position: relative;
   transition: color var(--t);
+  white-space: nowrap;
 }
 .gnb > ul > li > a::after {
   content:'';
