@@ -734,45 +734,23 @@ a.contact-item__val:hover { color:var(--c-gold); }
   margin:-30px -30px 22px;
   border-bottom:1px solid rgba(17,17,17,.12);
   overflow:hidden;
-  background:
-    linear-gradient(24deg, transparent 0 47%, rgba(60,130,72,.42) 47% 49%, transparent 49% 100%),
-    linear-gradient(152deg, transparent 0 43%, rgba(60,130,72,.34) 43% 45%, transparent 45% 100%),
-    linear-gradient(90deg, transparent 0 31%, rgba(17,17,17,.09) 31% 31.5%, transparent 31.5% 100%),
-    linear-gradient(0deg, transparent 0 38%, rgba(17,17,17,.08) 38% 38.5%, transparent 38.5% 100%),
-    linear-gradient(90deg, rgba(17,17,17,.045) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(17,17,17,.045) 1px, transparent 1px),
-    #f2f2ee;
-  background-size:auto, auto, auto, auto, 58px 58px, 58px 58px, auto;
+  background:#f2f2ee;
 }
-.about-place__map::before,
-.about-place__map::after {
-  content:'';
+.about-place__map-fallback {
   position:absolute;
-  background:rgba(17,17,17,.14);
-  transform-origin:center;
-}
-.about-place__map::before {
-  width:140%;
-  height:18px;
-  left:-20%;
-  top:54%;
-  transform:rotate(-8deg);
-}
-.about-place__map::after {
-  width:14px;
-  height:130%;
-  left:45%;
-  top:-15%;
-  transform:rotate(18deg);
-}
-.about-place__pin {
-  position:absolute;
-  left:52%;
-  top:48%;
-  z-index:2;
+  left:50%;
+  top:50%;
   transform:translate(-50%, -50%);
-  min-width:82px;
-  padding:10px 12px;
+  z-index:0;
+  color:#111;
+  border-bottom:1px solid #111;
+  padding-bottom:3px;
+  font-size:1.2rem;
+}
+.naver-map-marker {
+  position:relative;
+  min-width:86px;
+  padding:10px 13px;
   background:#111;
   color:#fff;
   text-align:center;
@@ -782,7 +760,7 @@ a.contact-item__val:hover { color:var(--c-gold); }
   letter-spacing:.12em;
   box-shadow:0 12px 28px rgba(0,0,0,.22);
 }
-.about-place__pin::after {
+.naver-map-marker::after {
   content:'';
   position:absolute;
   left:50%;
@@ -802,7 +780,7 @@ a.contact-item__val:hover { color:var(--c-gold); }
   color:#777;
   font-size:1.25rem;
 }
-.about-place__info > a:not(.about-place__map) {
+.about-place__info > a:not(.about-place__map-fallback) {
   justify-self:start;
   margin-top:12px;
   border-bottom:1px solid #111;
@@ -812,7 +790,7 @@ a.contact-item__val:hover { color:var(--c-gold); }
   letter-spacing:.08em;
   transition:opacity var(--t);
 }
-.about-place__info > a:not(.about-place__map):hover {
+.about-place__info > a:not(.about-place__map-fallback):hover {
   opacity:.6;
 }
 
