@@ -998,6 +998,17 @@ body.main-page.mobile-scroll .ms {
 .ms--contact .footer-copy {
   color:#fff;
 }
+.ms--contact .ms__contact-info a {
+  color:#fff;
+}
+.ms--contact .ms__contact-info a:hover {
+  color:#d8d8d2;
+}
+.main-page .site-header.scrolled.nav-open,
+.main-page .site-header.scrolled:hover,
+.main-page .site-header.scrolled:focus-within {
+  background:rgba(255,255,255,.96);
+}
 .kakao-float {
   position:fixed;
   right:22px;
