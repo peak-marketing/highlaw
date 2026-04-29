@@ -136,7 +136,9 @@ body.main-page.mobile-scroll .ms {
 /* GNB */
 .gnb { margin-left: auto; }
 .gnb ul { display:flex; gap:36px; }
+.gnb li { position:relative; }
 .gnb a {
+  display:block;
   font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: .04em;
@@ -144,7 +146,7 @@ body.main-page.mobile-scroll .ms {
   position: relative;
   transition: color var(--t);
 }
-.gnb a::after {
+.gnb > ul > li > a::after {
   content:'';
   position:absolute;
   bottom:-4px; left:0;
@@ -153,7 +155,52 @@ body.main-page.mobile-scroll .ms {
   transition: width var(--t);
 }
 .gnb a:hover { color: var(--c-gold); }
-.gnb a:hover::after { width:100%; }
+.gnb > ul > li:hover > a::after,
+.gnb > ul > li > a:hover::after { width:100%; }
+.gnb-dropdown {
+  position:absolute;
+  top:calc(100% + 18px);
+  left:50%;
+  min-width:190px;
+  padding:16px 0;
+  background:#fff;
+  border-top:2px solid #111;
+  box-shadow:0 18px 36px rgba(0,0,0,.14);
+  transform:translateX(-50%) translateY(8px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity var(--t), transform var(--t), visibility var(--t);
+}
+.gnb-dropdown::before {
+  content:'';
+  position:absolute;
+  left:0;
+  right:0;
+  top:-20px;
+  height:20px;
+}
+.gnb .gnb-dropdown a {
+  padding:8px 22px;
+  color:#111;
+  font-size:1.3rem;
+  font-weight:400;
+  line-height:1.55;
+  letter-spacing:0;
+  text-align:center;
+  white-space:nowrap;
+}
+.gnb .gnb-dropdown a:hover {
+  background:#f3f3f0;
+  color:#111;
+}
+.gnb .has-dropdown:hover .gnb-dropdown,
+.gnb .has-dropdown:focus-within .gnb-dropdown {
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
 
 /* Header consult button */
 .btn-header-consult {
